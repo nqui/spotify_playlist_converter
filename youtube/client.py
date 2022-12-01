@@ -53,7 +53,7 @@ class YoutubeClient():
             body={
                 "snippet": {
                     "playlistId": f"{playlist_id}",
-                    "position": 0, # test this for overwriting item at pos 0
+                    "position": 0,
                     "resourceId": {
                     "kind": "youtube#video",
                     "videoId": f"{video_id}"
