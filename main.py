@@ -24,10 +24,10 @@ youtube = YoutubeClient(
     )
 
 spotify = SpotifyClient(
-    url=config.get('SPOTIFY_API_URL'), 
-    client_id=config.get('SPOTIFY_CLIENT_ID'), 
-    client_secret=config.get('SPOTIFY_CLIENT_SECRET'),
-    auth_url=config.get('SPOTIFY_AUTH_URL')
+    url = config.get('SPOTIFY_API_URL'), 
+    client_id = config.get('SPOTIFY_CLIENT_ID'), 
+    client_secret = config.get('SPOTIFY_CLIENT_SECRET'),
+    auth_url = config.get('SPOTIFY_AUTH_URL')
     )
 
 def convert_spotify_playlist(url, title):
@@ -40,8 +40,8 @@ def convert_spotify_playlist(url, title):
                 f"{track.get('name')} {track.get('artists')}"
             )
             youtube.insert_playlist_item(
-                playlist_id=yt_playlist.get('id'),
-                video_id=yt_track.get('items')[0].get('id').get('videoId')
+                playlist_id = yt_playlist.get('id'),
+                video_id = yt_track.get('items')[0].get('id').get('videoId')
                 )
     return f"https://www.youtube.com/playlist?list={yt_playlist.get('id')}"
 

@@ -28,14 +28,14 @@ class YoutubeClient():
         request = self.client.playlists().list(
             part = "snippet,contentDetails",
             maxResults = 25,
-            mine=True
+            mine = True
         )
         return request.execute()
 
     def create_playlist(self, title):  # todo - update to take args
         request = self.client.playlists().insert(
-            part="snippet,status",
-            body={
+            part = "snippet,status",
+            body = {
                 "snippet": {
                     "title": title,
                     "defaultLanguage": "en"
@@ -49,8 +49,8 @@ class YoutubeClient():
 
     def insert_playlist_item(self, playlist_id, video_id):
         request = self.client.playlistItems().insert(
-            part="snippet",
-            body={
+            part = "snippet",
+            body = {
                 "snippet": {
                     "playlistId": f"{playlist_id}",
                     "position": 0,
@@ -66,8 +66,8 @@ class YoutubeClient():
 
     def search(self, term):
         request = self.client.search().list(
-            part="snippet",
-            maxResults=25,
-            q=term
+            part = "snippet",
+            maxResults = 25,
+            q = term
         )
         return request.execute()
