@@ -36,13 +36,18 @@ def convert_spotify_playlist(url, title):
     if len(tracks) > 0:
         yt_playlist = youtube.create_playlist(title=title)
         for track in tracks:
-            yt_track = youtube.search(
-                f"{track.get('name')} {track.get('artists')}"
-            )
-            youtube.insert_playlist_item(
-                playlist_id = yt_playlist.get('id'),
-                video_id = yt_track.get('items')[0].get('id').get('videoId')
+            time.sleep(10)
+            try:
+                yt_track = youtube.search(
+                    f"{track.get('name')} {track.get('artists')}"
                 )
+                print(f"inserting {track.get('name')}")
+                youtube.insert_playlist_item(
+                    playlist_id = yt_playlist.get('id'),
+                    video_id = yt_track.get('items')[0].get('id').get('videoId')
+                    )
+            except:
+                pass
     return f"https://www.youtube.com/playlist?list={yt_playlist.get('id')}"
 
 
