@@ -45,7 +45,7 @@ class SpotifyClient:
 
     def _parse_playlist_tracks(self, payload):
         all = list()
-        for track_info in payload.json().get('items'):
+        for track_info in payload.json().get('tracks').get('items'):
             track = track_info.get('track')
             artists = ""
             for a in track.get('artists'):
